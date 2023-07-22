@@ -1,22 +1,37 @@
-import {Dimensions, ScrollView, StyleSheet, View} from 'react-native';
+import {Alert, Dimensions, ScrollView, StyleSheet, View} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import colors from '../theme/color';
 import {Text, Divider, TouchableRipple} from 'react-native-paper';
 import UIText from '../components/ui/UIText';
 import UIButton from '../components/ui/UIButton';
 import UITextInput from '../components/ui/UITextInput';
+import {signUpUser} from '../apis/signUpUser';
 
-const SignupScreen = ({navigation}) => {
+const Registeration = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [department, setDepartment] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [addedUser, setAddedUser] = useState('');
 
-  const addUser = () => {
+  const addUser = async () => {
     if (email && name && password && confirmPassword) {
       if (password === confirmPassword) {
+        const payload = {
+          email: email,
+          name: name,
+          department: department,
+          password: password,
+        };
+        try {
+          const res = await signUpUser({payload: payload});
+          Alert.alert('Success', 'Account Created Succesfully');
+          navigation.navigate('Login');
+        } catch (error1) {
+          Alert.alert('Error', 'Error Occurred');
+        }
       } else {
         setError('Password Do not Match');
       }
@@ -45,6 +60,12 @@ const SignupScreen = ({navigation}) => {
           setValue={setName}
           type="Simple"
           label="Full Name"
+        />
+        <UITextInput
+          value={department}
+          setValue={setDepartment}
+          type="Simple"
+          label="Department"
         />
         <UITextInput
           value={password}
@@ -122,7 +143,7 @@ const SignupScreen = ({navigation}) => {
   );
 };
 
-export default SignupScreen;
+export default Registeration;
 
 const styles = StyleSheet.create({
   container: {

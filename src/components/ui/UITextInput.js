@@ -24,14 +24,14 @@ const styles = StyleSheet.create({
   inputStyle: {
     width: '100%',
     borderColor: colors.darkGrey,
-    marginTop: 2,
+    marginTop: 5,
     borderRadius: 10,
     backgroundColor: '#FAF9F6',
   },
   searchBarStyle: {
     width: '100%',
     borderColor: colors.darkGrey,
-    marginTop: 2,
+    marginTop: 5,
     borderRadius: 10,
     backgroundColor: '#FAF9F6',
   },

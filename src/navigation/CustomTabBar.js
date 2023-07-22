@@ -1,5 +1,10 @@
 import React, {useState} from 'react';
 import {Image, StyleSheet, View, TouchableOpacity, Text} from 'react-native';
+import colors from '../theme/color';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+import Home from '../assets/home.png';
+import Profile from '../assets/profile.png';
+import Schedule from '../assets/schedule.png';
 
 export default function CustomTabBar({state, navigation}) {
   const [flexDirection] = useState({flexDirection: 'row-reverse'});
@@ -13,15 +18,7 @@ export default function CustomTabBar({state, navigation}) {
           }
         }}
         style={[styles.navButton, styles.homeButton]}>
-        <TabBarIcon
-          label={'Home'}
-          focused={state.index === 0}
-          //   icon={
-          //     state.index === 0
-          //       ? require('@/assets/images/home_active.png')
-          //       : require('@/assets/images/home.png')
-          //   }
-        />
+        <TabBarIcon label={'Home'} focused={state.index === 0} icon={Home} />
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -34,11 +31,7 @@ export default function CustomTabBar({state, navigation}) {
         <TabBarIcon
           label={'Schedules'}
           focused={state.index === 1}
-          //   icon={
-          //     state.index === 1
-          //       ? require('@/assets/images/bookings_active.png')
-          //       : require('@/assets/images/bookings.png')
-          //   }
+          icon={Schedule}
         />
       </TouchableOpacity>
 
@@ -52,11 +45,7 @@ export default function CustomTabBar({state, navigation}) {
         <TabBarIcon
           label={'Profile'}
           focused={state.index === 2}
-          //   icon={
-          //     state.index === 2
-          //       ? require('@/assets/images/profile_active.png')
-          //       : require('@/assets/images/profile.png')
-          //   }
+          icon={Profile}
         />
       </TouchableOpacity>
     </View>
@@ -97,12 +86,13 @@ export const styles = StyleSheet.create({
     height: 22,
     borderRadius: 22,
     marginBottom: 5,
+    // backgroundColor: 'grey',
   },
   bottomNavContainer: {
     height: '12%',
     width: '100%',
     position: 'absolute',
-    backgroundColor: 'white',
+    backgroundColor: colors.secBlue,
     borderTopEndRadius: 20,
     borderTopStartRadius: 20,
     left: 0,

@@ -1,9 +1,10 @@
-import {View, StyleSheet, Dimensions} from 'react-native';
+import {View, StyleSheet, Dimensions, Image} from 'react-native';
 import React from 'react';
 import {Text} from 'react-native-paper';
 import colors from '../../../theme/color';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import moment from 'moment';
+import ArrowIcon from '../../../assets/Arrow.png';
+
 const UpdateHead = ({update}) => {
   return (
     <View style={styles.messageContainer}>
@@ -22,7 +23,7 @@ const UpdateHead = ({update}) => {
       </View>
       <View>
         {/* Logo Goes Here */}
-        <Icon style={styles.iconStyle} name="camera" size={25} />
+        {/* <Image style={styles.tinyLogo} source={ArrowIcon} /> */}
       </View>
     </View>
   );
@@ -43,6 +44,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iconStyle: {marginRight: 10},
+  tinyLogo: {
+    width: 25,
+    height: 25,
+  },
 });
 
 export default UpdateHead;

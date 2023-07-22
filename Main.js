@@ -1,25 +1,27 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 
 import {ActivityIndicator, StatusBar, View, StyleSheet} from 'react-native';
 import 'react-native-gesture-handler';
 
 import {AuthNavigation} from './src/navigation/AuthNavigation';
 import {MainNavigation} from './src/navigation/MainNavigation';
+import {AuthContext} from './src/context/AuthContext';
 
-const Main = ({isLoggedIn}) => {
+const Main = () => {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={'black'} barStyle="light-content" />
-      <RenderNavigation isLoggedIn={isLoggedIn} />
+      <RenderNavigation />
     </View>
   );
 };
 
-const RenderNavigation = ({isLoggedIn}) => {
+const RenderNavigation = () => {
   const [initialRouteName] = useState('Home');
   const [authInitialRouteName] = useState('Welcome');
+  const [authState, setAuthState] = useContext(AuthContext);
 
-  return isLoggedIn ? (
+  return authState.signedIn ? (
     <MainNavigation initialRouteName={initialRouteName} />
   ) : (
     <AuthNavigation initialRouteName={authInitialRouteName} />

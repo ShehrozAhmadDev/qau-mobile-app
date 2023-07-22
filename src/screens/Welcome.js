@@ -25,7 +25,6 @@ const Welcome = ({navigation}) => {
       <View>
         <UIButton
           action={() => {
-            console.log('HERE');
             navigation.navigate('Login');
           }}
           color={colors.mainBlue}

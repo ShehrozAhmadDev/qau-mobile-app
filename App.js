@@ -1,29 +1,45 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 
 import AsyncStorage from '@react-native-community/async-storage';
 import Main from './Main';
-
+import {AuthContext, AuthContextProvider} from './src/context/AuthContext';
+import Welcome from './src/assets/Welcome.jpg';
 const App = () => {
   const [isReady, setIsReady] = useState(false);
-  const [token, setToken] = useState();
+
+  return (
+    <AuthContextProvider>
+      <RenderApp isReady={isReady} setIsReady={setIsReady} />
+    </AuthContextProvider>
+  );
+};
+const RenderApp = ({isReady, setIsReady}) => {
+  const [token, setToken] = useState(null);
+  const [authState, setAuthState] = useContext(AuthContext);
+
   const getApiToken = async () => {
-    const getToken = await AsyncStorage.getItem('token');
-    setToken(getToken);
-    setTimeout(() => {
-      setIsReady(true);
-    }, 2000);
+    try {
+      const getToken = await AsyncStorage.getItem('token');
+      setToken(getToken || ''); // Make sure to set an empty string if token is null/undefined
+      if (getToken) {
+        setAuthState({id: '', signedIn: true, token: getToken});
+      }
+      setTimeout(() => {
+        setIsReady(true);
+      }, 2000);
+    } catch (error) {
+      console.error('Error retrieving authentication token:', error);
+    }
   };
+
   useEffect(() => {
     getApiToken();
-  });
+  }, []);
 
-  return <RenderApp isReady={isReady} token={token} />;
-};
-const RenderApp = ({isReady, token}) => {
   if (isReady) {
-    return <Main isLoggedIn={token ? true : false} />;
+    return <Main />;
   } else {
     return <RenderSplash />;
   }
@@ -31,12 +47,11 @@ const RenderApp = ({isReady, token}) => {
 const RenderSplash = () => {
   return (
     <View style={styles.splashContainer}>
-      <Text>Splash</Text>
-      {/* <Image
-          style={styles.splashContainer}
-          source={require('@/assets/images/SplashScreen.jpeg')}
-          resizeMode="cover"
-        /> */}
+      <Image
+        style={styles.splashContainer}
+        source={Welcome}
+        resizeMode="cover"
+      />
     </View>
   );
 };

@@ -21,7 +21,7 @@ const Updates = ({navigation}) => {
 
   useEffect(() => {
     fetchAllUpdates();
-  });
+  }, []);
   return (
     <View style={styles.container}>
       <UIText type="headlineMedium" styling="headerStyle" text="Updates" />

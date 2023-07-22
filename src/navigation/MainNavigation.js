@@ -25,10 +25,7 @@ export const MainNavigation = ({initialRouteName}) => {
           headerStyle: {
             backgroundColor: colors.secBlue,
           },
-          headerTitleStyle: {
-            fontWeight: 'bold', // Set font weight for the header title
-            textAlign: 'center',
-          },
+          headerTitleAlign: 'center',
         }}>
         <Stack.Screen
           name="MyTab"
@@ -46,7 +43,6 @@ export const MainNavigation = ({initialRouteName}) => {
     </NavigationContainer>
   );
 };
-
 const MainTabs = ({route}) => {
   const initialRouteName = route.params.initialRouteName;
 
@@ -71,9 +67,9 @@ const MainTabs = ({route}) => {
             backgroundColor: colors.secBlue,
           },
           headerTitleStyle: {
-            fontWeight: 'bold', // Set font weight for the header title
-            textAlign: 'center',
+            fontWeight: 'bold',
           },
+          headerTitleAlign: 'center',
         }}
         name="Home"
         component={Home}
@@ -85,9 +81,9 @@ const MainTabs = ({route}) => {
             backgroundColor: colors.secBlue,
           },
           headerTitleStyle: {
-            fontWeight: 'bold', // Set font weight for the header title
-            textAlign: 'center',
+            fontWeight: 'bold',
           },
+          headerTitleAlign: 'center',
         }}
         name="Schedules"
         component={Schedules}
@@ -98,9 +94,9 @@ const MainTabs = ({route}) => {
             backgroundColor: colors.secBlue,
           },
           headerTitleStyle: {
-            fontWeight: 'bold', // Set font weight for the header title
-            textAlign: 'center',
+            fontWeight: 'bold',
           },
+          headerTitleAlign: 'center',
         }}
         name="Profile"
         component={Profile}

@@ -3,6 +3,8 @@ import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import React from 'react';
 import MapView, {Polyline, Marker} from 'react-native-maps';
 import moment from 'moment';
+import MapViewDirections from 'react-native-maps-directions';
+
 const ScheduleDetails = ({navigation, route}) => {
   const {width, height} = Dimensions.get('window');
 
@@ -31,9 +33,10 @@ const ScheduleDetails = ({navigation, route}) => {
         {coordinates.map((coord, index) => (
           <Marker key={index} coordinate={coord} />
         ))}
-
-        <Polyline
-          coordinates={coordinates}
+        <MapViewDirections
+          origin={coordinates[0]}
+          destination={coordinates[1]}
+          apikey="AIzaSyC8sfL4qz3H4hOTb5azUcQKVig9h87nFW0"
           strokeWidth={3}
           strokeColor={route?.params?.route?.color}
         />
@@ -53,7 +56,7 @@ const ScheduleDetails = ({navigation, route}) => {
           <Text style={{fontSize: 16}}>
             {moment(route?.params?.startTime).format('DD MM YY, h:mm a')}
           </Text>
-          <Text style={{fontSize: 16}}>---</Text>
+          <Text style={{fontSize: 16}}>--</Text>
           <Text style={{fontSize: 16}}>
             {moment(route?.params?.endTime).format('DD MM YY, h:mm a')}
           </Text>
@@ -69,9 +72,9 @@ const styles = StyleSheet.create({
   bottomContainer: {
     backgroundColor: 'white',
     position: 'absolute',
-    bottom: 16, // Adjust the value to change the vertical position of the container
-    left: 16, // Adjust the value to change the horizontal position of the container
-    right: 16, // Adjust the value to change the horizontal position of the container
+    bottom: 16,
+    left: 16,
+    right: 16,
     borderRadius: 8,
     padding: 16,
     alignItems: 'center',

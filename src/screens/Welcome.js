@@ -22,13 +22,12 @@ const Welcome = ({navigation}) => {
           source={require('../assets/Welcome.jpg')}
         />
       </View>
-      <View>
+      <View style={styles.buttonContainer}>
         <UIButton
           action={() => {
             navigation.navigate('Login');
           }}
           color={colors.mainBlue}
-          width={300}
           text={'Login'}
         />
       </View>
@@ -45,12 +44,17 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
+    backgroundColor: 'white',
     height: Dimensions.get('window').height,
-
-    marginVertical: 100,
+    paddingVertical: 100,
   },
   tinyLogo: {
-    width: 250,
-    height: 250,
+    width: 340,
+    height: 340,
+  },
+  buttonContainer: {
+    marginTop: 40,
+    paddingHorizontal: 40,
+    width: '100%',
   },
 });

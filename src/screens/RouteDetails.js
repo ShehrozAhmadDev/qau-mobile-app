@@ -2,6 +2,7 @@
 import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import React from 'react';
 import MapView, {Polyline, Marker} from 'react-native-maps';
+import MapViewDirections from 'react-native-maps-directions';
 
 const RouteDetails = ({navigation, route}) => {
   const {width, height} = Dimensions.get('window');
@@ -31,9 +32,10 @@ const RouteDetails = ({navigation, route}) => {
         {coordinates.map((coord, index) => (
           <Marker key={index} coordinate={coord} />
         ))}
-
-        <Polyline
-          coordinates={coordinates}
+        <MapViewDirections
+          origin={coordinates[0]}
+          destination={coordinates[1]}
+          apikey="AIzaSyC8sfL4qz3H4hOTb5azUcQKVig9h87nFW0"
           strokeWidth={3}
           strokeColor={route?.params?.route?.color}
         />

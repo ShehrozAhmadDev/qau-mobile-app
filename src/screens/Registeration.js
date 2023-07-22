@@ -43,6 +43,7 @@ const Registeration = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.container}>
+        <Text style={styles.loginHeader}>QAU Transport Registeration</Text>
         <UIText
           testID="signUpHeader"
           type="headlineSmall"
@@ -147,13 +148,13 @@ export default Registeration;
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
+    padding: 20,
     display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
     height: Dimensions.get('window').height,
   },
+  loginHeader: {fontSize: 20, textAlign: 'center'},
   orContainer: {
     display: 'flex',
     flexDirection: 'row',

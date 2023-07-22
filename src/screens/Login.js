@@ -1,4 +1,11 @@
-import {ScrollView, StyleSheet, View, Dimensions, Alert} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  Dimensions,
+  Alert,
+  Text,
+} from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
 import colors from '../theme/color';
 import {Divider, TouchableRipple} from 'react-native-paper';
@@ -43,6 +50,7 @@ const Login = ({}) => {
   return (
     <ScrollView>
       <View style={styles.container}>
+        <Text style={styles.loginHeader}>QAU Transport Login</Text>
         <UIText
           type="headlineMedium"
           styling="headerStyle"
@@ -97,11 +105,12 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
+    paddingTop: 200,
     backgroundColor: 'white',
     height: Dimensions.get('window').height,
   },
+  loginHeader: {fontSize: 20, textAlign: 'center'},
   orContainer: {
     display: 'flex',
     flexDirection: 'row',

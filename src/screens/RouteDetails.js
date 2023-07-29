@@ -34,7 +34,7 @@ const RouteDetails = ({navigation, route}) => {
         ))}
         <MapViewDirections
           origin={coordinates[0]}
-          destination={coordinates[1]}
+          destination={coordinates[coordinates.length - 1]}
           apikey="AIzaSyC8sfL4qz3H4hOTb5azUcQKVig9h87nFW0"
           strokeWidth={3}
           strokeColor={route?.params?.route?.color}

@@ -12,6 +12,9 @@ import Trips from '../screens/Trips';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import RouteDetails from '../screens/RouteDetails';
+import AboutUs from '../screens/AboutUs';
+import TripPlan from '../screens/TripPlan';
+import TripPlanPreview from '../screens/TripPlanPreview';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -39,6 +42,9 @@ export const MainNavigation = ({initialRouteName}) => {
         <Stack.Screen name="Trips" component={Trips} />
         <Stack.Screen name="ScheduleDetails" component={ScheduleDetails} />
         <Stack.Screen name="RouteDetails" component={RouteDetails} />
+        <Stack.Screen name="AboutUs" component={AboutUs} />
+        <Stack.Screen name="TripPlan" component={TripPlan} />
+        <Stack.Screen name="TripPlanPreview" component={TripPlanPreview} />
       </Stack.Navigator>
     </NavigationContainer>
   );

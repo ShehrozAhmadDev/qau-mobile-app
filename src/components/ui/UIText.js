@@ -15,6 +15,16 @@ const UIText = ({text, type, styling, children, ...props}) => {
       color: colors.darkGrey,
       textAlign: 'center',
     },
+    labelStyle: {
+      color: colors.darkGrey,
+      fontSize: 16,
+      marginTop: 1,
+      marginBottom: 5,
+      marginLeft: 10,
+      textAlign: 'left',
+      width: '100%',
+      fontWeight: 'bold',
+    },
   });
   return (
     <Text
@@ -25,6 +35,8 @@ const UIText = ({text, type, styling, children, ...props}) => {
           ? styles.headerText
           : styling === 'termStyle'
           ? styles.termStyle
+          : styling === 'labelStyle'
+          ? styles.labelStyle
           : null
       }>
       {text}

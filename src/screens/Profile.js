@@ -38,6 +38,9 @@ const Profile = ({navigation}) => {
     });
   };
 
+  const handleNavigationtoAbout = () => {
+    navigation.navigate('AboutUs');
+  };
   useEffect(() => {
     fetchUser();
   }, []);
@@ -56,17 +59,14 @@ const Profile = ({navigation}) => {
         </View>
       </View>
       <View>
+        <TouchableOpacity
+          style={[styles.button]}
+          onPress={handleNavigationtoAbout}>
+          <Text style={styles.buttonText}>About Us</Text>
+        </TouchableOpacity>
+        <View style={[styles.separator]} />
         <TouchableOpacity style={[styles.logoutButton]} onPress={handleLogout}>
-          <Text
-            style={{
-              fontSize: 22,
-              textAlign: 'center',
-              margin: 5,
-              fontWeight: 'bold',
-              color: 'white',
-            }}>
-            Logout
-          </Text>
+          <Text style={styles.buttonText}>Logout</Text>
         </TouchableOpacity>
         <View style={[styles.separator]} />
       </View>
@@ -108,6 +108,18 @@ const styles = StyleSheet.create({
     backgroundColor: colors.red,
     padding: 15,
     borderRadius: 10,
+  },
+  button: {
+    backgroundColor: colors.mainBlue,
+    padding: 15,
+    borderRadius: 10,
+  },
+  buttonText: {
+    fontSize: 22,
+    textAlign: 'center',
+    margin: 5,
+    fontWeight: 'bold',
+    color: 'white',
   },
 });
 

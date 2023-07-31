@@ -1,10 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, View, Dimensions} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  ImageBackground,
+} from 'react-native';
 import React from 'react';
 import MapView, {Polyline, Marker} from 'react-native-maps';
 import moment from 'moment';
 import MapViewDirections from 'react-native-maps-directions';
-
+import Bus from '../assets/Bus.png';
 const ScheduleDetails = ({navigation, route}) => {
   const {width, height} = Dimensions.get('window');
 
@@ -31,7 +37,19 @@ const ScheduleDetails = ({navigation, route}) => {
         loadingEnabled={true}>
         {/* Add markers for each coordinate */}
         {coordinates.map((coord, index) => (
-          <Marker key={index} coordinate={coord} />
+          <Marker key={index} coordinate={coord}>
+            {index === 0 && (
+              <ImageBackground
+                source={Bus}
+                style={{
+                  width: 50,
+                  height: 50,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              />
+            )}
+          </Marker>
         ))}
         <MapViewDirections
           origin={coordinates[0]}

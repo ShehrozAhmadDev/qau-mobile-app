@@ -15,6 +15,7 @@ import RouteDetails from '../screens/RouteDetails';
 import AboutUs from '../screens/AboutUs';
 import TripPlan from '../screens/TripPlan';
 import TripPlanPreview from '../screens/TripPlanPreview';
+import ContactUs from '../screens/ContactUs';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -43,6 +44,7 @@ export const MainNavigation = ({initialRouteName}) => {
         <Stack.Screen name="ScheduleDetails" component={ScheduleDetails} />
         <Stack.Screen name="RouteDetails" component={RouteDetails} />
         <Stack.Screen name="AboutUs" component={AboutUs} />
+        <Stack.Screen name="ContactUs" component={ContactUs} />
         <Stack.Screen name="TripPlan" component={TripPlan} />
         <Stack.Screen name="TripPlanPreview" component={TripPlanPreview} />
       </Stack.Navigator>

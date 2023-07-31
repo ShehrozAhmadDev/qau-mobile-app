@@ -41,6 +41,9 @@ const Profile = ({navigation}) => {
   const handleNavigationtoAbout = () => {
     navigation.navigate('AboutUs');
   };
+  const handleNavigationtoContact = () => {
+    navigation.navigate('ContactUs');
+  };
   useEffect(() => {
     fetchUser();
   }, []);
@@ -59,6 +62,12 @@ const Profile = ({navigation}) => {
         </View>
       </View>
       <View>
+        <TouchableOpacity
+          style={[styles.button]}
+          onPress={handleNavigationtoContact}>
+          <Text style={styles.buttonText}>Contact Us</Text>
+        </TouchableOpacity>
+        <View style={[styles.separator]} />
         <TouchableOpacity
           style={[styles.button]}
           onPress={handleNavigationtoAbout}>
